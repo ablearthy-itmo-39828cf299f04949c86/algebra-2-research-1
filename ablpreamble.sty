@@ -19,6 +19,8 @@
 \usepackage{amssymb}
 \usepackage{amsthm}
 \usepackage{extarrows}
+\usepackage{mathtools}
+\usepackage{esdiff}
 
 \usepackage{polyglossia}
 \setmainlanguage[babelshorthands = true]{russian}
@@ -99,3 +101,7 @@
     separate-uncertainty,
     ]{siunitx}[=v2]                 % Размерности SI
 \sisetup{inter-unit-product = \ensuremath{{}\cdot{}}}
+
+\DeclarePairedDelimiter\dotprod{\langle}{\rangle}
+
+\newcommand\myproj[2]{\frac{\dotprod{#1, #2}}{\dotprod{#2, #2}} #2}
