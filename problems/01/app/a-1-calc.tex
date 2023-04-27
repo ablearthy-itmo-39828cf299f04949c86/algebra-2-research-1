@@ -1,0 +1,31 @@
+\section{Вычисления, нужные для ортогонализации базиса} \label{app:a-1-calc}
+
+\begin{align*}
+\BsH_1 &= \Bs_1 = 1 & \\
+\BsH_2 &= t &
+\begin{cases}
+  \dotprod{\Bs_2, \BsH_1}
+    = \int_{-1}^{1} \left( t \cdot 1 \right) \dd{t} = 0 \\
+  \dotprod{\BsH_1, \BsH_1}
+    = \int_{-1}^{1} \left( 1 \cdot 1 \right) \dd{t} = 2
+\end{cases} \\
+\BsH_3 &= t^2 - \frac{1}{3} \cdot 1 &
+\begin{cases}
+  \dotprod{\Bs_3, \BsH_1}
+    = \int_{-1}^{1} \left( t^2 \cdot 1 \right) \dd{t} = \frac{2}{3} \\
+  \dotprod{\Bs_3, \BsH_2}
+    = \int_{-1}^{1} \left( t^2 \cdot t \right) \dd{t} = 0 \\
+  \dotprod{\BsH_2, \BsH_2}
+    = \int_{-1}^{1} \left( t \cdot t \right) \dd{t} = \frac{2}{3}
+\end{cases} \\
+\BsH_4 &= t^3 - \frac{3}{5} t &
+\begin{cases}
+  \dotprod{\Bs_4, \BsH_1}
+    = \int_{-1}^{1} \left( t^3 \cdot 1 \right) \dd{t} = 0 \\
+  \dotprod{\Bs_4, \BsH_2}
+    = \int_{-1}^{1} \left( t^3 \cdot t \right) \dd{t} = \frac{2}{5} \\
+  \dotprod{\Bs_4, \BsH_3}
+    = \int_{-1}^{1}
+      \left( t^3 \cdot \left( t^2 - \frac{1}{3} \right) \right) \dd{t} = 0
+\end{cases}
+\end{align*}
