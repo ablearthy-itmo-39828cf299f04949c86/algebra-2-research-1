@@ -8,8 +8,6 @@
 
 \usepackage{import}
 
-\newcommand*\diff{\mathop{}\!\mathrm{d}}
-
 \def\asydir{asy}
 
 %\usepackage{svg}
@@ -32,6 +30,8 @@ texpreamble("\setsansfont{Arial}\setmonofont{Courier New}");
 texpreamble("\setmathfont{XITS Math}");
 \end{asydef}
 
+\import{./problems/}{01}
+
 \clearpage
   \import{./}{score_sheet}
 \clearpage
@@ -39,4 +39,9 @@ texpreamble("\setmathfont{XITS Math}");
 \clearpage
   \import{./}{conclusion}
 \clearpage
+
+\clearpage
+  \import{./}{app}
+\clearpage
+
 \end{document}
