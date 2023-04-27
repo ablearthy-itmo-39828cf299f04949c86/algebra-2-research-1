@@ -1,0 +1,42 @@
+\documentclass[a4paper,12pt]{article}
+
+\usepackage{ablpreamble}
+
+\usepackage[inline]{asymptote}
+\usepackage{caption}
+\usepackage{subcaption}
+
+\usepackage{import}
+
+\newcommand*\diff{\mathop{}\!\mathrm{d}}
+
+\def\asydir{asy}
+
+%\usepackage{svg}
+
+\begin{document}
+
+\import{./}{titlepage}
+\clearpage
+  \setcounter{page}{2}
+  \tableofcontents
+\clearpage
+
+
+\begin{asydef}
+// Global Asymptote definitions can be put here.
+settings.prc=true;
+texpreamble("\usepackage{xltxtra,unicode-math}");
+texpreamble("\setmainfont{Times New Roman}\setromanfont{Times New Roman}");
+texpreamble("\setsansfont{Arial}\setmonofont{Courier New}");
+texpreamble("\setmathfont{XITS Math}");
+\end{asydef}
+
+\clearpage
+  \import{./}{score_sheet}
+\clearpage
+
+\clearpage
+  \import{./}{conclusion}
+\clearpage
+\end{document}
