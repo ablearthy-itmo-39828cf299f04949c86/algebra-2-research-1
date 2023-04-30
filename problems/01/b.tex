@@ -1,0 +1,160 @@
+\subsection{Задание № 1 Б}
+
+Дано пространство \(R\) функций, непрерывных на отрезке \([-\pi; \pi]\)
+со скалярным произведением
+\(\dotprod{f, g} = \int_{-\pi}^{\pi} f(t) g(t) \dd t \)
+и длиной вектора \(||f|| = \sqrt{\dotprod{f, f}}\).
+
+Тригонометрические многочлены
+\[
+  P_{n}(t) = \frac{a_0}{2} + a_1 \cos(t) + b_1 \sin(t) + \ldots
+  + a_n \cos(n t) + b_n \sin(n t)
+\]
+где \(a_k, b_k\) --- вещественные коэффициенты,
+образующие подпространство \(P\) подпространства \(R\).
+Требуется найти многочлен \(P_{n}(t)\) в пространстве \(P\),
+минимально отличающийся от функции \(f(t) = 2t\)
+--- вектора пространства \(R\).
+
+\subsubsection{Решение}
+
+Проверим, что система функций
+\(\{1, \cos(t), \sin(t), \ldots \cos(nt), \sin(nt)\}\)
+является ортогональным базисом подпространства \(P\).
+
+Эта система является базисом подпространства \(P\)
+по его определению.
+Осталось проверить ортогональность этой системы, для этого посчитаем
+скалярные произведения элементов \(n \neq m\):
+\[
+  \dotprod{1, \cos nx} = \int_{-\pi}^{\pi} \cos nx \dd x
+  = \frac{\sin nx}{n} \bigg\vert_{-\pi}^{\pi}
+  = \frac{\sin(\pi n) - \sin(-\pi n)}{n} = 0
+\]
+\[
+  \dotprod{1, \sin nx} = \int_{-\pi}^{\pi} \sin nx \dd x
+  = -\frac{\cos nx}{n} \bigg\vert_{-\pi}^{\pi}
+  = \frac{-\cos(\pi n) + \cos(-\pi n)}{n} = 0
+\]
+\[
+\begin{split}
+  \dotprod{\cos nx, \cos mx}
+  &= \int_{-\pi}^{\pi} \cos nx \cos mx \dd x \\
+  &= \frac{1}{2}
+    \int_{-\pi}^{\pi} (\cos((n - m) x) + \cos((n + m) x)) \dd x \\
+  &= \frac{1}{2} \left.\left(
+      \frac{\sin((n - m) x)}{n - m} + \frac{\sin((n + m) x)}{n + m}
+  \right) \right\vert_{-\pi}^{\pi} = 0
+\end{split}
+\]
+\[
+\begin{split}
+  \dotprod{\sin nx, \sin mx}
+  &= \int_{-\pi}^{\pi} \sin nx \sin mx \dd x \\
+  &= \frac{1}{2} \int_{-\pi}^{\pi} (\cos((n - m) x) - \cos((n + m) x)) \dd x \\
+  &= \frac{1}{2} \left.\left(
+      \frac{\sin((n - m) x)}{n - m} - \frac{\sin((n + m) x)}{n + m}
+  \right) \right\vert_{-\pi}^{\pi} = 0
+\end{split}
+\]
+\[
+\begin{split}
+  \dotprod{\sin nx, \cos mx}
+  &= \int_{-\pi}^{\pi} \sin nx \cos mx \dd x \\
+  &= \frac{1}{2} \int_{-\pi}^{\pi} (\sin((n - m) x) + \sin((n + m) x)) \dd x
+\end{split}
+\]
+Данный интеграл равен нулю по свойству определённого интеграла
+от нечётных функций на симметричном отрезке. Следовательно,
+\[\dotprod{\sin nx, \cos mx} = 0\]
+Нормируем эту систему, для этого вычислим нормы элементов:
+\[
+  \dotprod{1,1}
+  = \int_{-\pi}^{\pi} 1 \dd x
+  = 2\pi
+  \implies
+  \lVert 1 \rVert
+  = \sqrt{2 \pi}
+\]
+\[
+\begin{split}
+\dotprod{\cos nx, \cos nx}
+  &= \int_{-\pi}^{\pi} {(\cos nx)}^2 \dd x
+  = \frac{1}{2} \int_{-\pi}^{\pi} (1 + \cos(2nx)) \dd x \\
+  &= \frac{1}{2} \left.
+    \left( x + \frac{\sin(2nx)}{2n} \right)
+    \right\rvert_{-\pi}^{\pi} = \pi
+  \implies \lVert \cos nx \rVert = \sqrt{\pi}
+\end{split}
+\]
+\[
+\begin{split}
+  \dotprod{\sin nx, \sin nx}
+  &= \int_{-\pi}^{\pi} {(\sin nx)}^2 \dd x
+  = \frac{1}{2} \int_{-\pi}^{\pi} (1 - \cos(2nx)) \dd x \\
+  &= \frac{1}{2} \left.
+    \left( x - \frac{\sin(2nx)}{2n} \right)
+    \right\rvert_{-\pi}^{\pi} = \pi
+  \implies \lVert \sin nx \rVert = \sqrt{\pi}
+\end{split}
+\]
+Значит ортонормированная система будет иметь вид:
+\[
+  \left\{
+    \frac{1}{\sqrt{2 \pi}},
+    \frac{\cos t}{\sqrt{\pi}},
+    \frac{\sin t}{\sqrt{\pi}},
+    \ldots
+    \frac{\cos nt}{\sqrt{\pi}},
+    \frac{\sin nt}{\sqrt{\pi}}
+  \right\}
+\]
+
+Найдём проекции вектора \(f(t) = 2t\) на векторы полученного
+ортонормированного базиса.
+Процесс вычисления описан в приложении \ref{app:b-1-calc}
+\begin{align*}
+  \dotprod{\frac{1}{\sqrt{2\pi}}, 2t} &= 0 \\
+  \dotprod{\frac{\cos nt}{\sqrt{\pi}}, 2t} &= 0 \\
+  \dotprod{\frac{\sin nt}{\sqrt{\pi}}, 2t}
+    &= -\frac{4 \sqrt{\pi} \cos(\pi n)}{n}
+\end{align*}
+
+Так как базис ортонормированный,
+то полученные координаты есть суть проекции
+вектора \(f(t)\) на базисные векторы.
+
+Запишем минимально остоящий многочлен \(P_{n}(t)\)
+с найденными коэффициентами:
+\[
+  P_{n}(t)
+  = \sum_{n = 1}^{\infty}
+    \left(-\frac{4\cos(\pi n)}{n} \sin(nt)\right)
+  = \sum_{n = 1}^{\infty}
+    \left({(-1)}^{n + 1} \frac{\sin(nt)}{n}\right)
+\]
+Изобразим графики функций \(f(t)\) и многочлена Фурье
+различных порядков \(n\).
+
+\begin{figure}[!htbp]
+  \centering
+  \begin{subfigure}{0.32\textwidth}
+    \centering
+    \asyinclude{asy/01-b-01.asy}
+    \caption{\(n = 5\)}
+  \end{subfigure}
+  \begin{subfigure}{0.32\textwidth}
+    \centering
+    \asyinclude{asy/01-b-02.asy}
+    \caption{\(n = 10\)}
+  \end{subfigure}
+  \begin{subfigure}{0.32\textwidth}
+    \centering
+    \asyinclude{asy/01-b-03.asy}
+    \caption{\(n = 15\)}
+  \end{subfigure}
+  \caption{Графики функций \(f(x)\) и \(P_{n}(x)\)}
+\end{figure}
+
+Таким образом,
+при увеличении порядка многочлен все точнее приближает исходную функцию.

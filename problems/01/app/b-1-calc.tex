@@ -1,0 +1,38 @@
+\section{Вычисление проекций вектора \(f(t) = 2t\) на векторы базиса}
+\label{app:b-1-calc}
+
+\[
+  \dotprod{\frac{1}{\sqrt{2\pi}}, 2t}
+  = \int_{-\pi}^{\pi} \frac{2t}{\sqrt{2\pi}} \dd t = 0
+\]
+
+\begin{align*}
+  \dotprod{\frac{\cos nt}{\sqrt{\pi}}, 2t}
+  &= \frac{1}{\sqrt{\pi}} \int_{-\pi}^{\pi} \cos(nt) 2t \dd t
+  =
+  \begin{bmatrix}
+      u = 2t & v = \frac{\sin(nt)}{n} \\
+      \dd u = 2 \dd t & dv = \cos(nt) \dd t
+  \end{bmatrix} \\
+  &= \left.\frac{2t \sin(nt)}{n \sqrt{\pi}} \right\rvert_{-\pi}^{\pi}
+  - \int_{-\pi}^{\pi} \frac{2 \sin(nt)}{n \sqrt{\pi}} \dd t
+  = \left.\frac{2 \cos(nt)}{n^2 \sqrt{\pi}} \right\rvert_{-\pi}^{\pi} \\
+  &= \frac{2 \cos(\pi n)}{n^2 \sqrt{\pi}}
+  - \frac{2 \cos(-\pi n)}{n^2 \sqrt{\pi}} = 0
+\end{align*}
+
+\begin{align*}
+  \dotprod{\frac{\sin nt}{\sqrt{\pi}}, 2t}
+  &= \frac{1}{\sqrt{\pi}}\int_{-\pi}^{\pi} \sin(nt) 2t \dd t
+  =
+  \begin{bmatrix}
+      u = 2t & v = -\frac{\cos(nt)}{n} \\
+      \dd u = 2 \dd t & \dd v = \sin(nt) \dd t
+  \end{bmatrix} \\
+  &= -\left.\frac{2t \cos(nt)}{n \sqrt{\pi}} \right\rvert_{-\pi}^{\pi}
+  + \int_{-\pi}^{\pi} \frac{2 \cos(nt)}{n \sqrt{\pi}} \dd t \\
+  &= -\frac{2\pi \cos(\pi n)}{n \sqrt{\pi}}
+    - \frac{2\pi \cos(\pi n)}{n \sqrt{\pi}}
+    + \left.\frac{2 \sin(nt)}{n^2 \sqrt{\pi}} \right\rvert_{-\pi}^{\pi}
+    = -\frac{4\sqrt{\pi} \cos(\pi n)}{n}
+\end{align*}
