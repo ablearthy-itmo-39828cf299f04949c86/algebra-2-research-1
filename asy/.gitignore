@@ -1,0 +1,4 @@
+*
+!.gitignore
+!*.asy
+main-*.asy
