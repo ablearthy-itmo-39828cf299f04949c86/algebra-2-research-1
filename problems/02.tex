@@ -1,0 +1,238 @@
+\section{Задание № 2}
+
+Дано уравнение:
+\[2x^2 - 6xy + 2y^2 + z^2 - 25 = 0\]
+
+\begin{enumerate}
+  \item Составьте матрицу квадратичной формы и диагонализируйте ее.
+    Запишите канонический базис квадратичной формы.
+  \item Классифицируйте поверхность по ее каноническому уравнению.
+  \item Определите, каким преобразованием пространства поверхность была
+    приведена к главным осям.
+  \item Изобразите график уравнения в исходной системе координат.
+    Укажите на графике оси исходной и приведённой систем координат
+\end{enumerate}
+
+\subsection{Решение}
+
+\begin{figure}[htbp]
+  \centering
+  \asyinclude{asy/02.asy}
+  \caption{Графическая иллюстрация к задаче № 2} \label{fig:2}
+\end{figure}
+
+
+Составим матрицу квадратичной формы.
+
+\[
+  2x^2 + 2y^2 + z^2
+  + 2 (-3) xy + 2 \cdot 0 \cdot xz + 2 \cdot 0 \cdot yz
+  + 2 \cdot 0 \cdot y + 2 \cdot 0 \cdot z + (-25) = 0
+  \Rightarrow
+  A =
+  \begin{pmatrix}
+    2 & -3 & 0 \\
+    -3 & 2 & 1 \\
+    0 & 0 & 1
+  \end{pmatrix}
+\]
+
+Диагонализируем её. Для этого найдём собственные числа
+и собственные векторы.
+\[
+  \begin{vmatrix}
+    2 - λ & -3 & 0 \\
+    -3 & 2 - λ & 1 \\
+    0 & 0 & 1 - λ
+  \end{vmatrix}
+  = 0
+  \Leftrightarrow
+  (1 - λ) ({(2 - λ)}^2 - (-3) (-3)) = 0
+  \Leftrightarrow
+  (1 - λ) ({(2 - λ)}^2 - 9) = 0
+\]
+Отсюда получаем, что
+\(λ_1 = 1\),
+\(λ_2 = -1\),
+\(λ_3 = 5\).
+Тогда диагональная матрица такова:
+\[
+  Λ =
+  \begin{pmatrix}
+    -1 & 0 & 0 \\
+    0 & 1 & 0 \\
+    0 & 0 & 5
+  \end{pmatrix}
+\]
+
+Найдём собственные векторы:
+\begin{itemize}
+\item для \(λ_1\):
+\[
+  \begin{pmatrix}
+    2 + 1 & -3 & 0 \\
+    -3 & 2 + 1 & 0 \\
+    0 & 0 & 1 + 1
+  \end{pmatrix} \cdot
+  \begin{pmatrix}
+    x \\
+    y \\
+    z
+  \end{pmatrix}
+  = 0
+  \implies
+  l_1 =
+  \begin{pmatrix}
+    x \\
+    y \\
+    z
+  \end{pmatrix} = α
+  \begin{pmatrix}
+    1 \\
+    1 \\
+    0
+  \end{pmatrix}
+\]
+\item для \(λ_2\):
+\[
+  \begin{pmatrix}
+    2 - 1 & -3 & 0 \\
+    -3 & 2 - 1 & 0 \\
+    0 & 0 & 1 - 1
+  \end{pmatrix} \cdot
+  \begin{pmatrix}
+    x \\
+    y \\
+    z
+  \end{pmatrix}
+  = 0
+  \implies
+  l_2 =
+  \begin{pmatrix}
+    x \\
+    y \\
+    z
+  \end{pmatrix} = β
+  \begin{pmatrix}
+    0 \\
+    0 \\
+    1
+  \end{pmatrix}
+\]
+\item для \(λ_3\):
+\[
+  \begin{pmatrix}
+    2 - 5 & -3 & 0 \\
+    -3 & 2 - 5 & 0 \\
+    0 & 0 & 1 - 5
+  \end{pmatrix} \cdot
+  \begin{pmatrix}
+    x \\
+    y \\
+    z
+  \end{pmatrix}
+  = 0
+  \implies
+  l_3 =
+  \begin{pmatrix}
+    x \\
+    y \\
+    z
+  \end{pmatrix} = γ
+  \begin{pmatrix}
+    1 \\
+    -1 \\
+    0
+  \end{pmatrix}
+\]
+\end{itemize}
+Пусть:
+\[
+  l_1 =
+  \begin{pmatrix}
+    1 \\
+    1 \\
+    0
+  \end{pmatrix} \quad
+  l_2 =
+  \begin{pmatrix}
+    0 \\
+    0 \\
+    1
+  \end{pmatrix} \quad
+  l_3 =
+  \begin{pmatrix}
+    1 \\
+    -1 \\
+    0
+  \end{pmatrix}
+\]
+Собственные векторы попарно ортогональны,
+нормируем их:
+\[
+  s_1 = \frac{l_1}{\sqrt{1 + 1}} =
+  \begin{pmatrix}
+    \frac{1}{\sqrt{2}} \\
+    \frac{1}{\sqrt{2}} \\
+    0
+  \end{pmatrix} \quad
+  s_2 = l_2 =
+  \begin{pmatrix}
+    0 \\
+    0 \\
+    1
+  \end{pmatrix} \quad
+  s_3 = \frac{l_3}{\sqrt{1 + 1}} =
+  \begin{pmatrix}
+    \frac{1}{\sqrt{2}} \\
+    -\frac{1}{\sqrt{2}} \\
+    0
+  \end{pmatrix}
+\]
+Следовательно,
+\[
+  S =
+  \begin{pmatrix}
+    \frac{1}{\sqrt{2}} & 0 & \frac{1}{\sqrt{2}} \\
+    \frac{1}{\sqrt{2}} & 0 & -\frac{1}{\sqrt{2}} \\
+    0 & 1 & 0
+  \end{pmatrix}
+\]
+
+Члены первого порядка образуют матрицу:
+\[
+  B =
+  \begin{pmatrix}
+    0 \\ 0 \\ 0
+  \end{pmatrix}
+\]
+Найдём коэффициенты при них в новом базисе:
+\[
+  B' = B S = B
+\]
+
+Следовательно, канонический вид:
+\[-{x'}^2 + {y'}^2 + 5 {z'}^2 - 25 = 0\]
+Из чего следует:
+\[-\frac{{x'}^2}{25} + \frac{{y'}^2}{25} + \frac{{z'}^2}{5} = 1\]
+
+Итак, это однополостный гиперболоид с центральной осью \(Ox'\).
+
+Переход от новых координат к старым.
+\[
+  \begin{pmatrix} x \\ y \\ z \end{pmatrix} =
+  \begin{pmatrix}
+    \frac{1}{\sqrt{2}} & 0 & \frac{1}{\sqrt{2}} \\
+    \frac{1}{\sqrt{2}} & 0 & -\frac{1}{\sqrt{2}} \\
+    0 & 1 & 0
+  \end{pmatrix}
+  \begin{pmatrix}
+    x' \\ y' \\ z'
+  \end{pmatrix}
+\]
+
+Поверхность была приведена к главным осям посредством двух преобразований:
+\begin{enumerate}
+  \item вращением поверхности вокруг \(Oz\) на \(45^{\circ}\);
+  \item вращением поверхности вокруг \(Ox\) на \(90^{\circ}\).
+\end{enumerate}
