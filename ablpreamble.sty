@@ -7,6 +7,8 @@
 \usepackage{float}
 \usepackage{multirow}
 
+\usepackage{xparse}
+
 \usepackage{hyperref}
 \hypersetup{
     colorlinks, urlcolor={black},
@@ -106,3 +108,22 @@
 \DeclarePairedDelimiter\dotprod{\langle}{\rangle}
 
 \newcommand\myproj[2]{\frac{\dotprod{#1, #2}}{\dotprod{#2, #2}} #2}
+
+\ExplSyntaxOn
+\NewDocumentCommand{\coord}{sO{}m}
+ {
+  \IfBooleanTF{#1}
+   {\left(\coord_print:n {#3}\right)}
+   {\mathopen{#2(}\coord_print:n {#3}\mathclose{#2)}}
+ }
+
+\seq_new:N \l_coord_list_seq
+\tl_new:N \l_coord_last_tl
+\cs_new_protected:Npn \coord_print:n #1
+ {
+  \seq_set_split:Nnn \l_coord_list_seq { , } { #1 }
+  \seq_pop_right:NN \l_coord_list_seq \l_coord_last_tl
+  \seq_map_inline:Nn \l_coord_list_seq { ##1 , }
+  \tl_use:N \l_coord_last_tl
+ }
+\ExplSyntaxOff
